@@ -1,0 +1,95 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+@font-face {
+    font-family: great vibes;
+    src: url(./src/font/GreatVibes-Regular.ttf);
+}
+:root {
+    --charcoal-blue: #445167ff;
+    --alice-blue: #DFEEF6ff;
+    --steel-blue: #2E7DB6ff;
+    --yale-blue: #0B3E6Fff;
+    --yale-blue-2: #0C427Aff;
+}
+html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: var(--charcoal-blue);
+    height: 100vh;
+    font-family: great vibes;
+}
+canvas {
+    position: fixed;
+}
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.text-chrismas {
+    color: white;
+    font-size: 60px;
+    z-index: 2;
+}
+.deco {
+    position: fixed;
+    width: 250px;
+    height: 250px;
+    top: 0;
+    z-index: 2;
+}
+.left {
+    background: url(./src/img/téléchargement__1_-removebg-preview.png) left no-repeat;
+    background-size: contain;
+    left: 0;
+    animation: 0.5s show-left linear;
+}
+.right {
+    background: url(./src/img/téléchargement__1_-removebg-preview.png) left no-repeat;
+    transform: scaleX(-1);
+    background-size: contain;
+    right: 0;
+    animation: 0.5s show-right linear;
+}
+.gift {
+    position: fixed;
+    width: 100%;
+    height: auto;
+    bottom: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+.gift-element {
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+    transform: scale(1);
+    transition: transform 0.5s ease;
+    animation: 0.5s show-animation linear;
+}
+.gift-element:hover {
+    transition: 0.5s;
+    transform: scale(1.3);
+}
+
+@keyframes show-left {
+    0% {transform: translateX(-5rem);}
+    100% {transform: translateX(0);}
+}
+
+@keyframes show-right {
+    0% {transform: translateX(5rem) scaleX(-1);}
+    100% {transform: translateX(0) scaleX(-1);}
+}
+
+@keyframes show-animation {
+    0% {transform: translateY(5rem);}
+    100% {transform: translateY(0);}
+}
