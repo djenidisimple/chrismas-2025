@@ -39,6 +39,18 @@ setInterval(() => {
     wind = (Math.random() - 0.5) * 2;
 }, 3000)
 
+const drawFog = () => {
+    const fogGradient = ctx.createRadialGradient(
+        canvas.width / 2, canvas.height / 2, 0,
+        canvas.height / 2, canvas.height /2, canvas.width / 1.5 
+    );
+    fogGradient.addColorStop(0, "rgba(240, 248, 255, 0)");
+    fogGradient.addColorStop(1, "rgba(240, 248, 255, 0.3)");
+    
+    ctx.fillStyle = fogGradient;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
+
 const drawGround = () => {
     const sortedSnow = [...groundSnow].sort((a, b) => a.depth - b.depth);
 
@@ -60,13 +72,12 @@ const drawGround = () => {
 const animate = () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     const sortedSnow = [...snowflakes].sort((a, b) => a.depth - b.depth);
+    
     sortedSnow.forEach(flake => {
         const adjustedSpeed = flake.speed * flake.depth; 
-
         snow(flake.x, flake.y, flake.size, flake.depth);
         flake.x += Math.sin(flake.y * 0.01) * 0.5 * flake.depth + wind;
         flake.y += adjustedSpeed;
-        
         if (flake.y >= canvas.height - 15) {
             groundSnow.push({ 
                 x: flake.x, 
@@ -77,10 +88,11 @@ const animate = () => {
             flake.x = Math.random() * canvas.width;
         }
 
+
         if (flake.x < 0) flake.x = canvas.width;
         if (flake.x > canvas.width) flake.x = 0;
     });
-
+    drawFog();
     drawGround();
     requestAnimationFrame(animate)
 };
