@@ -1,6 +1,14 @@
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext("2d");
 let snowflakes = [];
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
+
 const snow = (x, y) => {
     ctx.beginPath();
     ctx.arc(x, y, 3, 0, Math.PI * 2);
@@ -16,9 +24,6 @@ for (let i = 0; i < 50; i++) {
         speed: Math.random() * 2 + 1
     });
 }
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
 
 const id = setInterval(() => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
