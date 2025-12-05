@@ -4,7 +4,7 @@
 }
 @font-face {
     font-family: great vibes;
-    src: url(./src/font/GreatVibes-Regular.ttf);
+    src: url(./assets/font/GreatVibes-Regular.ttf);
 }
 :root {
     --charcoal-blue: #445167ff;
@@ -34,13 +34,8 @@ canvas {
 .text-chrismas {
     color: white;
     font-size: 4em;
-    text-shadow: 
-    0 0 10px rgba(255, 255, 255, 0.5),
-    0 0 20px rgba(255, 255, 255, 0.3),
-    0 0 30px rgba(100, 150, 255, 0.2);
     z-index: 2;
     pointer-events: none;
-    animation: glow 3s ease-in-out infinite alternate;
 }
 .deco {
     position: fixed;
